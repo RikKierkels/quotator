@@ -1,0 +1,5 @@
+<main>
+  <div *ngIf="quote$ | async as quote">
+    {{ quote.quote }} - {{ quote.author }}
+  </div>
+</main>
