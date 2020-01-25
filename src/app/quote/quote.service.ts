@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Environment } from 'src/app/shared/environment';
-import { Observable, ReplaySubject } from 'rxjs';
-import { shareReplay, switchMap } from 'rxjs/operators';
+import { ReplaySubject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { Quote } from 'src/app/quote/quote.interface';
+import { STORAGE_KEYS, StorageKeys } from 'src/app/shared/storage.tokens';
+import { StorageService } from 'src/app/shared/storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,8 @@ export class QuoteService {
 
   constructor(
     private readonly httpClient: HttpClient,
-    private readonly environment: Environment
+    private readonly environment: Environment,
+    private readonly storageService: StorageService,
+    @Inject(STORAGE_KEYS) private readonly storageKeys: StorageKeys
   ) {}
 }
