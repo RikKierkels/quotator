@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { QuoteService } from 'src/app/quote/quote.service';
 import { Quote } from 'src/app/quote/quote.interface';
+import { QuoteFavoriteService } from 'src/app/quote/quote-favorite.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,12 @@ import { Quote } from 'src/app/quote/quote.interface';
 })
 export class AppComponent implements OnInit {
   quote$ = this.quoteService.quote$;
-  favorites$ = this.quoteService.favorites$;
+  favorites$ = this.quoteFavoriteService.favorites$;
 
-  constructor(private readonly quoteService: QuoteService) {}
+  constructor(
+    private readonly quoteService: QuoteService,
+    private readonly quoteFavoriteService: QuoteFavoriteService
+  ) {}
 
   ngOnInit(): void {
     this.quoteService.fetchQuoteSubject.next();
@@ -23,6 +27,6 @@ export class AppComponent implements OnInit {
   }
 
   addToFavorites(quote: Quote) {
-    this.quoteService.addToFavorites(quote);
+    this.quoteFavoriteService.add(quote);
   }
 }
