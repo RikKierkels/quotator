@@ -1,5 +1,13 @@
 <main>
   <div *ngIf="quote$ | async as quote">
     {{ quote.quote }} - {{ quote.author }}
+    <button (click)="addToFavorites(quote)">
+      Add to favorites
+    </button>
   </div>
+  <button (click)="fetchNewQuote()">
+    Get a new Quote
+  </button>
+
+  {{ favorites$ | async | json }}
 </main>
