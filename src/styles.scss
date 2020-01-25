@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap');
+@import './design/index';
+
+html,
+body {
+  height: 100%;
+}
+
+body,
+button {
+  font-size: font-size(medium);
+  line-height: 1.3em;
+  font-family: Anonymous Pro, system-ui, -apple-system, 'Segoe UI', 'Roboto',
+    'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+h1,
+h2,
+body {
+  font-weight: 400;
+  margin: 0;
+}

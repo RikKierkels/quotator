@@ -1,0 +1,22 @@
+$spacing-sizes: (small: 8px, medium: 16px, large: 32px);
+$spacing-multiplier: 1;
+
+@function spacing-size($size) {
+  @return map-get($spacing-sizes, $size) * $spacing-multiplier;
+}
+
+$breakpoints: (
+  small : 600px,
+);
+
+@mixin breakpoint-up($breakpoint) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint) - 1) {
+    @content;
+  }
+}

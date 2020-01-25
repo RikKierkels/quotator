@@ -1,0 +1,70 @@
+@import '../design/index';
+
+.main-container {
+  display: flex;
+  height: 100%;
+}
+
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.favorites-container {
+  flex: 0 0 400px;
+}
+
+.quote {
+  font-size: font-size(large);
+
+  &::before {
+    content: '❝';
+  }
+
+  &::after {
+    content: '❞';
+  }
+}
+
+.author {
+  font-size: font-size(medium);
+  margin-top: spacing-size(small);
+
+  &::before {
+    content: '- ';
+  }
+}
+
+.button-container {
+  display: flex;
+  margin-top: spacing-size(large);
+}
+
+.button-icon {
+  height: 14px;
+  margin-left: spacing-size(small);
+
+  &.invert {
+    filter: invert(1);
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  padding: spacing-size(small) spacing-size(medium);
+  background-color: white;
+  cursor: pointer;
+
+  &:first-child {
+    margin-right: spacing-size(medium);
+  }
+
+  &.invert {
+    background-color: black;
+    color: white;
+  }
+}

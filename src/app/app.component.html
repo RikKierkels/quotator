@@ -1,13 +1,48 @@
-<main>
-  <div *ngIf="quote$ | async as quote">
-    {{ quote.quote }} - {{ quote.author }}
-    <button (click)="addToFavorites(quote)">
-      Add to favorites
-    </button>
-  </div>
-  <button (click)="fetchNewQuote()">
-    Get a new Quote
-  </button>
+<main class="main-container" *ngIf="vm$ | async as vm">
+  <div class="quote-container">
+    <ng-container *ngIf="vm.quote; else noQuote">
+      <h1 class="quote">{{ vm.quote.quote }}</h1>
+      <h2 class="author">{{ vm.quote.author }}</h2>
+      <div class="button-container">
+        <button class="button" (click)="fetchQuote()">
+          New Quote
+          <img class="button-icon" [src]="icon.Refresh" alt="refresh" />
+        </button>
 
-  {{ favorites$ | async | json }}
+        <button
+          *ngIf="!vm.isSaved"
+          class="button"
+          (click)="addFavorite(vm.quote)"
+        >
+          Save
+          <img class="button-icon" [src]="icon.FavoriteBorder" alt="favorite" />
+        </button>
+
+        <button
+          *ngIf="vm.isSaved"
+          class="button invert"
+          (click)="removeFavorite(vm.quote.id)"
+        >
+          Saved!
+          <img
+            class="button-icon invert"
+            [src]="icon.Favorite"
+            alt="favorite"
+          />
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #noQuote>
+      <h1 class="quote">
+        Oops looks like something went wrong
+      </h1>
+    </ng-template>
+  </div>
+  <div *ngIf="vm.favorites" class="favorites-container">
+    <div class="quote-wrapper" *ngFor="let quote of vm.favorites">
+      <h1 class="quote">{{ quote.quote }}</h1>
+      <h2 class="author">{{ quote.author }}</h2>
+    </div>
+  </div>
 </main>
