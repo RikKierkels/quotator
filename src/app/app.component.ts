@@ -27,6 +27,6 @@ export class AppComponent implements OnInit {
   }
 
   addToFavorites(quote: Quote) {
-    this.quoteFavoriteService.add(quote);
+    this.quoteFavoriteService.addFavorite(quote);
   }
 }

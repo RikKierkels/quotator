@@ -9,6 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class QuoteFavoriteService {
   private favoritesSubject = new BehaviorSubject<Quote[]>([]);
+  private storageKey = this.storageKeys.favorites;
 
   private get favorites(): Quote[] {
     return this.favoritesSubject.getValue();
@@ -23,15 +24,26 @@ export class QuoteFavoriteService {
     @Inject(STORAGE_KEYS) private readonly storageKeys: StorageKeys
   ) {}
 
-  add(newQuote: Quote) {
+  syncWithStorage(): void {
+    const favorites = this.storageService.get<Quote[]>(this.storageKey);
+    this.favoritesSubject.next(favorites || []);
+  }
+
+  addFavorite(newQuote: Quote): void {
     let favorites = this.favorites;
 
     if (favorites.some(quote => quote.id === newQuote.id)) {
-      return favorites;
+      return;
     }
 
     favorites = [...favorites, newQuote];
-    this.storageService.set<Quote[]>(this.storageKeys.favorites, favorites);
+    this.storageService.set<Quote[]>(this.storageKey, favorites);
+    this.favoritesSubject.next(favorites);
+  }
+
+  removeFavorite(id: number): void {
+    const favorites = this.favorites.filter(quote => quote.id !== id);
+    this.storageService.set<Quote[]>(this.storageKey, favorites);
     this.favoritesSubject.next(favorites);
   }
 }
