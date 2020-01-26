@@ -36,7 +36,7 @@ export class QuoteSaveService {
       return;
     }
 
-    quotes = [...quotes, newQuote];
+    quotes = [newQuote, ...quotes];
     this.storageService.set<Quote[]>(this.storageKey, quotes);
     this.savedSubject.next(quotes);
   }
