@@ -1,51 +1,43 @@
 <main class="main-container" *ngIf="vm$ | async as vm">
   <section class="quote-container">
-    <ng-container *ngIf="vm.quote; else noQuote">
-      <h1 class="quote">{{ vm.quote.quote }}</h1>
-      <h2 class="author">{{ vm.quote.author }}</h2>
-      <div class="button-container">
-        <button class="button" (click)="fetchQuote()">
-          New Quote
-          <img
-            class="button-icon"
-            [src]="icon.Refresh"
-            alt="Icon showing a refresh symbol"
-          />
-        </button>
+    <h1 class="quote">{{ vm.quote.quote }}</h1>
+    <h2 class="author">{{ vm.quote.author }}</h2>
+    <div class="button-container">
+      <button class="button" (click)="fetchQuote()">
+        New Quote
+        <img
+          class="button-icon"
+          [src]="icon.Refresh"
+          alt="Icon showing a refresh symbol"
+        />
+      </button>
 
-        <button
-          *ngIf="!vm.isSaved"
-          class="button"
-          (click)="addFavorite(vm.quote)"
-        >
-          Save
-          <img
-            class="button-icon"
-            [src]="icon.FavoriteBorder"
-            alt="Icon indicating that the Quote is not saved as a favorite"
-          />
-        </button>
+      <button
+        *ngIf="!vm.isSaved"
+        class="button"
+        (click)="addFavorite(vm.quote)"
+      >
+        Save
+        <img
+          class="button-icon"
+          [src]="icon.FavoriteBorder"
+          alt="Icon indicating that the Quote is not saved as a favorite"
+        />
+      </button>
 
-        <button
-          *ngIf="vm.isSaved"
-          class="button invert"
-          (click)="removeFavorite(vm.quote.id)"
-        >
-          Saved!
-          <img
-            class="button-icon invert"
-            [src]="icon.Favorite"
-            alt="Icon indicating that the Quote is saved as a favorite"
-          />
-        </button>
-      </div>
-    </ng-container>
-
-    <ng-template #noQuote>
-      <h1 class="quote">
-        Oops looks like something went wrong
-      </h1>
-    </ng-template>
+      <button
+        *ngIf="vm.isSaved"
+        class="button invert"
+        (click)="removeFavorite(vm.quote.id)"
+      >
+        Saved!
+        <img
+          class="button-icon invert"
+          [src]="icon.Favorite"
+          alt="Icon indicating that the Quote is saved as a favorite"
+        />
+      </button>
+    </div>
   </section>
   <section
     *ngIf="vm.favorites && vm.favorites.length"
