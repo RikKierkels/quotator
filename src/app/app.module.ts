@@ -6,10 +6,10 @@ import { environment } from 'src/environments/environment';
 import { QuoteModule } from 'src/app/quote/quote.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { QuoteFavoriteService } from 'src/app/quote/quote-favorite.service';
+import { QuoteSaveService } from 'src/app/quote/quote-save.service';
 
-const initFavoritesFactory = (favoriteService: QuoteFavoriteService) => {
-  return () => favoriteService.syncWithStorage();
+const initQuoteSaveFactory = (quoteSaveService: QuoteSaveService) => {
+  return () => quoteSaveService.syncWithStorage();
 };
 
 @NgModule({
@@ -19,8 +19,8 @@ const initFavoritesFactory = (favoriteService: QuoteFavoriteService) => {
     { provide: Environment, useValue: environment },
     {
       provide: APP_INITIALIZER,
-      useFactory: initFavoritesFactory,
-      deps: [QuoteFavoriteService],
+      useFactory: initQuoteSaveFactory,
+      deps: [QuoteSaveService],
       multi: true
     }
   ],

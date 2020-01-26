@@ -12,40 +12,36 @@
         />
       </button>
 
-      <button
-        *ngIf="!vm.isSaved"
-        class="button"
-        (click)="addFavorite(vm.quote)"
-      >
+      <button *ngIf="!vm.isSaved" class="button" (click)="saveQuote(vm.quote)">
         Save
         <img
           class="button-icon"
           [src]="icon.FavoriteBorder"
-          alt="Icon indicating that the Quote is not saved as a favorite"
+          alt="Icon indicating that the Quote is not saved"
         />
       </button>
 
       <button
         *ngIf="vm.isSaved"
         class="button invert"
-        (click)="removeFavorite(vm.quote.id)"
+        (click)="removeQuote(vm.quote.id)"
       >
         Saved!
         <img
           class="button-icon invert"
           [src]="icon.Favorite"
-          alt="Icon indicating that the Quote is saved as a favorite"
+          alt="Icon indicating that the Quote is saved"
         />
       </button>
     </div>
   </section>
   <section
-    *ngIf="vm.favorites && vm.favorites.length"
-    class="favorites-container"
+    *ngIf="vm.savedQuotes && vm.savedQuotes.length"
+    class="saved-container"
   >
-    <qu-quote-favorites-list
-      [quotes]="vm.favorites"
-      (quoteRemoved)="removeFavorite($event)"
-    ></qu-quote-favorites-list>
+    <qu-quote-saved-list
+      [quotes]="vm.savedQuotes"
+      (quoteRemoved)="removeQuote($event)"
+    ></qu-quote-saved-list>
   </section>
 </main>

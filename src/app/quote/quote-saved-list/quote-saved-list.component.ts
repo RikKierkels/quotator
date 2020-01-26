@@ -9,12 +9,12 @@ import { Quote } from 'src/app/quote/quote.interface';
 import { Icon } from 'src/app/shared/icon.enum';
 
 @Component({
-  selector: 'qu-quote-favorites-list',
-  templateUrl: './quote-favorites-list.component.html',
-  styleUrls: ['./quote-favorites-list.component.scss'],
+  selector: 'qu-quote-saved-list',
+  templateUrl: './quote-saved-list.component.html',
+  styleUrls: ['./quote-saved-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuoteFavoritesListComponent {
+export class QuoteSavedListComponent {
   @Input() quotes: Quote[];
   @Output() quoteRemoved = new EventEmitter<number>();
 

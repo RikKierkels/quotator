@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { QuoteService } from 'src/app/quote/quote.service';
 import { Quote } from 'src/app/quote/quote.interface';
-import { QuoteFavoriteService } from 'src/app/quote/quote-favorite.service';
+import { QuoteSaveService } from 'src/app/quote/quote-save.service';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Icon } from 'src/app/shared/icon.enum';
@@ -17,17 +17,19 @@ export class AppComponent implements OnInit {
 
   vm$ = combineLatest([
     this.quoteService.quote$,
-    this.quoteFavoriteService.favorites$
+    this.quoteSaveService.quotes$
   ]).pipe(
-    map(([quote, favorites]) => {
-      const isSaved = quote && favorites.some(fav => fav.id === quote.id);
-      return { quote, favorites, isSaved };
+    map(([quote, savedQuotes]) => {
+      const isSaved = savedQuotes.some(
+        savedQuote => savedQuote.id === quote.id
+      );
+      return { quote, savedQuotes, isSaved };
     })
   );
 
   constructor(
     private readonly quoteService: QuoteService,
-    private readonly quoteFavoriteService: QuoteFavoriteService
+    private readonly quoteSaveService: QuoteSaveService
   ) {}
 
   ngOnInit(): void {
@@ -38,11 +40,11 @@ export class AppComponent implements OnInit {
     this.quoteService.fetchQuoteSubject.next();
   }
 
-  addFavorite(quote: Quote): void {
-    this.quoteFavoriteService.addFavorite(quote);
+  saveQuote(quote: Quote): void {
+    this.quoteSaveService.save(quote);
   }
 
-  removeFavorite(id: number): void {
-    this.quoteFavoriteService.removeFavorite(id);
+  removeQuote(id: number): void {
+    this.quoteSaveService.remove(id);
   }
 }

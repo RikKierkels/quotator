@@ -5,11 +5,11 @@
       <small class="author">{{ quote.author }}</small>
     </div>
 
-    <button class="favorite-button" (click)="quoteRemoved.emit(quote.id)">
+    <button class="saved-button" (click)="quoteRemoved.emit(quote.id)">
       <img
         class="button-icon"
         [src]="icon.Favorite"
-        alt="Icon indicating that the Quote is saved as a favorite"
+        alt="Icon indicating that the Quote is saved"
       />
     </button>
   </li>
