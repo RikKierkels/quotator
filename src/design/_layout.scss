@@ -6,14 +6,8 @@ $spacing-multiplier: 1;
 }
 
 $breakpoints: (
-  small : 600px,
+  small : 800px,
 );
-
-@mixin breakpoint-up($breakpoint) {
-  @media (min-width: map-get($breakpoints, $breakpoint)) {
-    @content;
-  }
-}
 
 @mixin breakpoint-down($breakpoint) {
   @media (max-width: map-get($breakpoints, $breakpoint) - 1) {

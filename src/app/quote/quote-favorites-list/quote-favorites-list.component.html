@@ -1,0 +1,16 @@
+<ul>
+  <li *ngFor="let quote of quotes; trackBy: trackByFn" class="quote-list-item">
+    <div class="quote-wrapper">
+      <p class="quote">{{ quote.quote }}</p>
+      <small class="author">{{ quote.author }}</small>
+    </div>
+
+    <button class="favorite-button" (click)="quoteRemoved.emit(quote.id)">
+      <img
+        class="button-icon"
+        [src]="icon.Favorite"
+        alt="Icon indicating that the Quote is saved as a favorite"
+      />
+    </button>
+  </li>
+</ul>

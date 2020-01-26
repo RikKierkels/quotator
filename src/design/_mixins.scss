@@ -1,0 +1,15 @@
+@mixin quote {
+  &::before {
+    content: '❝';
+  }
+
+  &::after {
+    content: '❞';
+  }
+}
+
+@mixin author {
+  &::before {
+    content: '- ';
+  }
+}

@@ -1,0 +1,37 @@
+@import '../../../design/index';
+
+.quote-list-item {
+  display: flex;
+  padding-bottom: spacing-size(medium);
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.quote-wrapper {
+  flex-grow: 1;
+}
+
+.quote {
+  font-size: font-size(medium);
+  @include quote;
+}
+
+.author {
+  font-size: font-size(small);
+  margin-top: spacing-size(small);
+  @include author;
+}
+
+.favorite-button {
+  flex: 0 0 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+
+  .button-icon {
+    height: 20px;
+  }
+}

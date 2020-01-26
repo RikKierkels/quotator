@@ -3,43 +3,69 @@
 .main-container {
   display: flex;
   height: 100%;
+
+  @include breakpoint-down(small) {
+    flex-direction: column;
+  }
 }
 
 .quote-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   flex-grow: 1;
+
+  @include breakpoint-down(small) {
+    padding-top: spacing-size(large);
+  }
 }
 
 .favorites-container {
   flex: 0 0 400px;
+  padding-bottom: spacing-size(medium);
+  overflow-y: scroll;
+
+  @include breakpoint-down(small) {
+    flex: 400px;
+    padding-left: spacing-size(medium);
+    padding-right: spacing-size(medium);
+  }
 }
 
 .quote {
+  max-width: 75%;
   font-size: font-size(large);
-
-  &::before {
-    content: '❝';
-  }
-
-  &::after {
-    content: '❞';
-  }
+  @include quote;
 }
 
 .author {
   font-size: font-size(medium);
   margin-top: spacing-size(small);
-
-  &::before {
-    content: '- ';
-  }
+  @include author;
 }
 
 .button-container {
   display: flex;
-  margin-top: spacing-size(large);
+  margin-top: spacing-size(medium);
+  margin-bottom: spacing-size(large);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  border: 1px solid $color-primary;
+  padding: spacing-size(small) spacing-size(medium);
+  background-color: $color-secondary;
+
+  &:first-child {
+    margin-right: spacing-size(medium);
+  }
+
+  &.invert {
+    background-color: $color-primary;
+    color: $color-secondary;
+  }
 }
 
 .button-icon {
@@ -48,23 +74,5 @@
 
   &.invert {
     filter: invert(1);
-  }
-}
-
-.button {
-  display: flex;
-  align-items: center;
-  border: 1px solid black;
-  padding: spacing-size(small) spacing-size(medium);
-  background-color: white;
-  cursor: pointer;
-
-  &:first-child {
-    margin-right: spacing-size(medium);
-  }
-
-  &.invert {
-    background-color: black;
-    color: white;
   }
 }

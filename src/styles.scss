@@ -1,9 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap');
 @import './design/index';
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
+}
+
+body {
+  color: $color-text;
 }
 
 body,
@@ -15,9 +23,21 @@ button {
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+p,
 h1,
 h2,
 body {
   font-weight: 400;
   margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
