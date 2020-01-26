@@ -3,6 +3,7 @@
 .main-container {
   display: flex;
   height: 100%;
+  padding: spacing-size(medium);
 
   @include breakpoint-down(small) {
     flex-direction: column;
@@ -15,21 +16,14 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-
-  @include breakpoint-down(small) {
-    padding-top: spacing-size(large);
-  }
 }
 
 .saved-container {
   flex: 0 0 400px;
-  padding-bottom: spacing-size(medium);
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @include breakpoint-down(small) {
     flex: 400px;
-    padding-left: spacing-size(medium);
-    padding-right: spacing-size(medium);
   }
 }
 
