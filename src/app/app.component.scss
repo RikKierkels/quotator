@@ -40,8 +40,8 @@
 }
 
 .author {
-  font-size: font-size(medium);
   margin-top: spacing-size(small);
+  font-size: font-size(medium);
   @include author;
 }
 
