@@ -1,3 +1,6 @@
+@import '../../src/design/colors';
+@import '../../src/design/layout';
+
 @mixin quote {
   &::before {
     content: '❝';

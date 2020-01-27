@@ -15,9 +15,9 @@ export class QuoteService {
     author: 'R.J.M. Kierkels',
     permalink: ''
   };
-  fetchQuoteSubject = new ReplaySubject<void>(1);
+  fetchQuote = new ReplaySubject<void>(1);
 
-  quote$ = this.fetchQuoteSubject.pipe(
+  quote$ = this.fetchQuote.pipe(
     exhaustMap(() => {
       return this.httpClient
         .get<Quote>(`${this.environment.apiUrl}/random.json`)

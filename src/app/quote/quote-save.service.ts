@@ -8,15 +8,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class QuoteSaveService {
-  private savedSubject = new BehaviorSubject<Quote[]>([]);
+  private savedQuotes = new BehaviorSubject<Quote[]>([]);
   private storageKey = this.storageKeys.saved;
 
   private get quotes(): Quote[] {
-    return this.savedSubject.getValue();
+    return this.savedQuotes.getValue();
   }
 
   get quotes$(): Observable<Quote[]> {
-    return this.savedSubject.asObservable();
+    return this.savedQuotes.asObservable();
   }
 
   constructor(
@@ -26,7 +26,7 @@ export class QuoteSaveService {
 
   syncWithStorage(): void {
     const quotes = this.storageService.get<Quote[]>(this.storageKey);
-    this.savedSubject.next(quotes || []);
+    this.savedQuotes.next(quotes || []);
   }
 
   save(newQuote: Quote): void {
@@ -38,12 +38,12 @@ export class QuoteSaveService {
 
     quotes = [newQuote, ...quotes];
     this.storageService.set<Quote[]>(this.storageKey, quotes);
-    this.savedSubject.next(quotes);
+    this.savedQuotes.next(quotes);
   }
 
   remove(id: number): void {
     const quotes = this.quotes.filter(quote => quote.id !== id);
     this.storageService.set<Quote[]>(this.storageKey, quotes);
-    this.savedSubject.next(quotes);
+    this.savedQuotes.next(quotes);
   }
 }

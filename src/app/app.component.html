@@ -3,36 +3,36 @@
     <h1 class="quote">{{ vm.quote.quote }}</h1>
     <h2 class="author">{{ vm.quote.author }}</h2>
     <div class="button-container">
-      <button class="button" (click)="fetchQuote()">
-        Next
-        <img
-          class="button-icon"
-          [src]="icon.Refresh"
-          alt="Icon showing a refresh symbol"
-        />
-      </button>
-
-      <button *ngIf="!vm.isSaved" class="button" (click)="saveQuote(vm.quote)">
-        Save
-        <img
-          class="button-icon"
-          [src]="icon.FavoriteBorder"
-          alt="Icon indicating that the Quote is not saved"
-        />
-      </button>
-
-      <button
-        *ngIf="vm.isSaved"
-        class="button invert"
-        (click)="removeQuote(vm.quote.id)"
+      <qu-button
+        altText="Icon showing a refresh symbol"
+        [icon]="icon.Refresh"
+        (click)="fetchQuote()"
+        class="button"
       >
-        Saved!
-        <img
-          class="button-icon invert"
-          [src]="icon.Favorite"
-          alt="Icon indicating that the Quote is saved"
-        />
-      </button>
+        Next
+      </qu-button>
+
+      <qu-button
+        *ngIf="!vm.isSaved"
+        altText="Icon indicating that the Quote is not saved"
+        [icon]="icon.FavoriteBorder"
+        (click)="saveQuote(vm.quote)"
+        class="button"
+      >
+        Save
+      </qu-button>
+
+      <qu-button
+        *ngIf="vm.isSaved"
+        altText="Icon indicating that the Quote is saved"
+        inverted
+        [icon]="icon.Favorite"
+        (click)="removeQuote(vm.quote.id)"
+        class="button"
+      >
+        Saved
+      </qu-button>
+      <qu-timer (tick)="fetchQuote()"></qu-timer>
     </div>
   </section>
   <section

@@ -1,0 +1,33 @@
+@import '../../../design/index';
+
+.button {
+  display: flex;
+  align-items: center;
+  border: 1px solid $color-primary;
+  padding: spacing-size(small) spacing-size(medium);
+  background-color: $color-secondary;
+
+  &.invert {
+    background-color: $color-primary;
+    color: $color-secondary;
+  }
+}
+
+.button-icon {
+  height: 14px;
+  margin-left: spacing-size(small);
+
+  &.invert {
+    filter: invert(1);
+  }
+}
+
+@include breakpoint-down(small) {
+  .button-content {
+    display: none;
+  }
+
+  .button-icon {
+    margin-left: 0;
+  }
+}

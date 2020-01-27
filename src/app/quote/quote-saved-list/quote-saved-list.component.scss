@@ -14,14 +14,14 @@
 }
 
 .quote {
-  font-size: font-size(medium);
   @include quote;
+  font-size: font-size(medium);
 }
 
 .author {
+  @include author;
   margin-top: spacing-size(small);
   font-size: font-size(small);
-  @include author;
 }
 
 .saved-button {

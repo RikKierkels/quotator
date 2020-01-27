@@ -33,11 +33,11 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.quoteService.fetchQuoteSubject.next();
+    this.quoteService.fetchQuote.next();
   }
 
   fetchQuote(): void {
-    this.quoteService.fetchQuoteSubject.next();
+    this.quoteService.fetchQuote.next();
   }
 
   saveQuote(quote: Quote): void {

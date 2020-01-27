@@ -5,7 +5,7 @@
   height: 100%;
   padding: spacing-size(medium);
 
-  @include breakpoint-down(small) {
+  @include breakpoint-down(medium) {
     flex-direction: column;
   }
 }
@@ -22,51 +22,37 @@
   flex: 0 0 400px;
   overflow-y: auto;
 
-  @include breakpoint-down(small) {
+  @include breakpoint-down(medium) {
     flex: 400px;
   }
 }
 
 .quote {
+  @include quote;
   max-width: 75%;
   font-size: font-size(large);
-  @include quote;
 }
 
 .author {
+  @include author;
   margin-top: spacing-size(small);
   font-size: font-size(medium);
-  @include author;
 }
 
 .button-container {
   display: flex;
   margin-top: spacing-size(medium);
   margin-bottom: spacing-size(large);
+
+  @include breakpoint-down(small) {
+    flex-wrap: wrap;
+  }
 }
 
 .button {
-  display: flex;
-  align-items: center;
-  border: 1px solid $color-primary;
-  padding: spacing-size(small) spacing-size(medium);
-  background-color: $color-secondary;
+  margin-right: spacing-size(medium);
 
-  &:first-child {
-    margin-right: spacing-size(medium);
-  }
-
-  &.invert {
-    background-color: $color-primary;
-    color: $color-secondary;
-  }
-}
-
-.button-icon {
-  height: 14px;
-  margin-left: spacing-size(small);
-
-  &.invert {
-    filter: invert(1);
+  &:last-child {
+    margin-right: 0;
   }
 }

@@ -15,8 +15,8 @@ import { Icon } from 'src/app/shared/icon.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuoteSavedListComponent {
-  @Input() quotes: Quote[];
   @Output() quoteRemoved = new EventEmitter<number>();
+  @Input() quotes: Quote[];
 
   icon = Icon;
 

@@ -1,0 +1,12 @@
+<button class="button" (click)="click.emit()" [ngClass]="{ invert: inverted }">
+  <span class="button-content">
+    <ng-content></ng-content>
+  </span>
+  <img
+    *ngIf="icon"
+    class="button-icon"
+    [src]="icon"
+    [alt]="altText"
+    [ngClass]="{ invert: inverted }"
+  />
+</button>

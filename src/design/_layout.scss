@@ -6,7 +6,8 @@ $spacing-multiplier: 1;
 }
 
 $breakpoints: (
-  small : 800px,
+  small: 450px,
+  medium : 900px
 );
 
 @mixin breakpoint-down($breakpoint) {
