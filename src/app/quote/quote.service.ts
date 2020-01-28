@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Environment } from 'src/app/shared/environment';
 import { Observable, of, ReplaySubject } from 'rxjs';
-import { catchError, exhaustMap, switchMap } from 'rxjs/operators';
+import { catchError, exhaustMap, shareReplay, switchMap } from 'rxjs/operators';
 import { Quote } from 'src/app/quote/quote.interface';
 
 @Injectable({
@@ -22,7 +22,8 @@ export class QuoteService {
       return this.httpClient
         .get<Quote>(`${this.environment.apiUrl}/random.json`)
         .pipe(catchError(() => of(this.errorQuote)));
-    })
+    }),
+    shareReplay(1)
   );
 
   constructor(
