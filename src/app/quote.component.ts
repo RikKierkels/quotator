@@ -8,11 +8,11 @@ import { Icon } from 'src/app/shared/icon.enum';
 
 @Component({
   selector: 'qu-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  templateUrl: './quote.component.html',
+  styleUrls: ['./quote.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
+export class QuoteComponent implements OnInit {
   icon = Icon;
 
   vm$ = combineLatest([

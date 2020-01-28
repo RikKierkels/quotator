@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { AppComponent } from 'src/app/app.component';
+import { QuoteComponent } from 'src/app/quote.component';
 import { Environment } from 'src/app/shared/environment';
 import { environment } from 'src/environments/environment';
 import { QuoteModule } from 'src/app/quote/quote.module';
@@ -13,7 +13,7 @@ const initQuoteSaveFactory = (quoteSaveService: QuoteSaveService) => {
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [QuoteComponent],
   imports: [BrowserModule, HttpClientModule, QuoteModule, SharedModule],
   providers: [
     { provide: Environment, useValue: environment },
@@ -24,6 +24,6 @@ const initQuoteSaveFactory = (quoteSaveService: QuoteSaveService) => {
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [QuoteComponent]
 })
 export class AppModule {}
