@@ -25,7 +25,7 @@
       <qu-button
         *ngIf="vm.isSaved"
         altText="Icon indicating that the Quote is saved"
-        inverted
+        [inverted]="true"
         [icon]="icon.Favorite"
         (click)="removeQuote(vm.quote.id)"
         class="button"
