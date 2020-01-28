@@ -43,16 +43,8 @@
   display: flex;
   margin-top: spacing-size(medium);
   margin-bottom: spacing-size(large);
-
-  @include breakpoint-down(small) {
-    flex-wrap: wrap;
-  }
 }
 
 .button {
   margin-right: spacing-size(medium);
-
-  &:last-child {
-    margin-right: 0;
-  }
 }
