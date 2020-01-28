@@ -20,7 +20,7 @@ export class QuoteSavedListComponent {
 
   icon = Icon;
 
-  trackByFn(index, item): number {
-    return item.id;
+  trackByFn(index: number, quote: Quote): number {
+    return quote.id;
   }
 }
