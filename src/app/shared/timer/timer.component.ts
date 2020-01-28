@@ -30,11 +30,11 @@ import { FormControl } from '@angular/forms';
 export class TimerComponent implements OnInit, OnDestroy {
   @Output() tick = new EventEmitter<void>();
 
-  private initialState: TimerState = { isTicking: false, intervalInSec: 5 };
+  private initialState: TimerState = { isTicking: false, interval: 5 };
   private subscription: Subscription;
 
   icon = Icon;
-  intervalControl = new FormControl(this.initialState.intervalInSec);
+  intervalControl = new FormControl(this.initialState.interval);
 
   start = new Subject<void>();
   stop = new Subject<void>();
@@ -61,7 +61,7 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   timer$ = this.state$.pipe(
     switchMap(state => {
-      const intervalInMs = state.intervalInSec * 1000;
+      const intervalInMs = state.interval * 1000;
       return state.isTicking ? timer(intervalInMs, intervalInMs) : NEVER;
     }),
     tap(() => this.tick.emit())
