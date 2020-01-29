@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { QuoteService } from 'src/app/quote/quote.service';
-import { Quote } from 'src/app/quote/quote.interface';
-import { QuoteSaveService } from 'src/app/quote/quote-save.service';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Icon } from 'src/app/shared/icon.enum';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Icon } from 'src/app/shared/icon.enum';
+import { QuoteService } from 'src/app/quote/services/quote.service';
+import { QuoteSaveService } from 'src/app/quote/services/quote-save.service';
+import { Quote } from 'src/app/quote/quote.interface';
 
 @Component({
-  selector: 'qu-root',
+  selector: 'qu-quote',
   templateUrl: './quote.component.html',
   styleUrls: ['./quote.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

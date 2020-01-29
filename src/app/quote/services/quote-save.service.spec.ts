@@ -1,5 +1,5 @@
-import { QuoteSaveService } from 'src/app/quote/quote-save.service';
-import { StorageService } from 'src/app/shared/storage.service';
+import { QuoteSaveService } from 'src/app/quote/services/quote-save.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 import { makeQuote } from 'src/app/quote/quote.test-helpers';
 
 jest.mock('src/app/shared/storage.service');

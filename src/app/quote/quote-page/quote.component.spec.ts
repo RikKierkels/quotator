@@ -1,6 +1,6 @@
-import { QuoteComponent } from 'src/app/quote.component';
-import { QuoteService } from 'src/app/quote/quote.service';
-import { QuoteSaveService } from 'src/app/quote/quote-save.service';
+import { QuoteService } from 'src/app/quote/services/quote.service';
+import { QuoteSaveService } from 'src/app/quote/services/quote-save.service';
+import { QuoteComponent } from 'src/app/quote/quote-page/quote.component';
 
 jest.mock('src/app/quote/quote.service');
 jest.mock('src/app/quote/quote-save.service');

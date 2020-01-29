@@ -1,4 +1,4 @@
-import { QuoteService } from 'src/app/quote/quote.service';
+import { QuoteService } from 'src/app/quote/services/quote.service';
 import { Environment } from 'src/app/shared/environment';
 import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';

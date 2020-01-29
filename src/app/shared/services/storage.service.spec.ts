@@ -1,4 +1,4 @@
-import { StorageService } from 'src/app/shared/storage.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 const storageMock: jest.Mocked<Storage> = {
   getItem: jest.fn(),

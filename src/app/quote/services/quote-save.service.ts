@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { StorageService } from 'src/app/shared/storage.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 import { STORAGE_KEYS, StorageKeys } from 'src/app/shared/storage.tokens';
 import { Quote } from 'src/app/quote/quote.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
