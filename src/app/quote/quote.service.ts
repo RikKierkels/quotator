@@ -11,7 +11,8 @@ import { Quote } from 'src/app/quote/quote.interface';
 export class QuoteService {
   errorQuote: Quote = {
     _id: '######',
-    quote: 'Oops, looks like something went wrong! Try to fetch a new quote :)',
+    content:
+      'Oops, looks like something went wrong! Try to fetch a new quote :)',
     author: 'R.J.M. Kierkels'
   };
   fetchQuote = new ReplaySubject<void>(1);

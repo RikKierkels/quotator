@@ -18,13 +18,12 @@ describe('QuoteService', () => {
 
   it('should fetch a random quote from the api', done => {
     const expectedQuote: Quote = {
-      id: 1,
-      author: 'R.J.M. Kierkels',
-      quote: 'Mocking the environment is easy now.',
-      permalink: ''
+      _id: '1',
+      content: 'Mocking the environment is easy now.',
+      author: 'R.J.M. Kierkels'
     };
     httpClient.get.mockImplementationOnce((url: string) => {
-      return url === 'https://some-api.com/random.json'
+      return url === 'https://some-api.com/random'
         ? of(expectedQuote)
         : throwError('api url is incorrect');
     });
@@ -41,12 +40,11 @@ describe('QuoteService', () => {
   });
 
   it('should show an error quote if the api call fails', done => {
-    const errorQuote = {
-      id: -1,
-      quote:
+    const errorQuote: Quote = {
+      _id: '######',
+      content:
         'Oops, looks like something went wrong! Try to fetch a new quote :)',
-      author: 'R.J.M. Kierkels',
-      permalink: ''
+      author: 'R.J.M. Kierkels'
     };
     httpClient.get.mockReturnValueOnce(throwError(null));
 

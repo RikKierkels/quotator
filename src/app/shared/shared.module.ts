@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TimerComponent } from './timer/timer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ButtonComponent } from './button/button.component';
+import { TimerComponent } from 'src/app/shared/timer/timer.component';
+import { ButtonComponent } from 'src/app/shared/button/button.component';
 
 @NgModule({
   declarations: [TimerComponent, ButtonComponent],

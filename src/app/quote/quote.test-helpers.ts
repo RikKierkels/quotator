@@ -1,5 +1,5 @@
 import * as faker from 'faker';
-import { Quote } from './quote.interface';
+import { Quote } from 'src/app/quote/quote.interface';
 
 export const makeQuote = (): Quote => ({
   _id: faker.random.uuid(),

@@ -1,4 +1,4 @@
-import { TimerComponent } from './timer.component';
+import { TimerComponent } from 'src/app/shared/timer/timer.component';
 
 describe('TimerComponent', () => {
   let component: TimerComponent;
