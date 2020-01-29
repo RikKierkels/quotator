@@ -28,7 +28,7 @@ import { FormControl } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimerComponent implements OnInit, OnDestroy {
-  @Output() tick = new EventEmitter<void>();
+  @Output() tick = new EventEmitter<number>();
 
   private initialState: TimerState = { isTicking: false, intervalInSec: 5 };
   private subscription: Subscription;
@@ -44,7 +44,7 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.stop.pipe(mapTo({ isTicking: false })),
     this.intervalControl.valueChanges.pipe(
       distinctUntilChanged(),
-      map(interval => ({ interval }))
+      map(intervalInSec => ({ intervalInSec }))
     )
   );
 
@@ -64,7 +64,7 @@ export class TimerComponent implements OnInit, OnDestroy {
       const intervalInMs = state.intervalInSec * 1000;
       return state.isTicking ? timer(intervalInMs, intervalInMs) : NEVER;
     }),
-    tap(() => this.tick.emit())
+    tap(tickCount => this.tick.emit(tickCount))
   );
 
   ngOnInit(): void {
