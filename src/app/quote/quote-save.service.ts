@@ -32,7 +32,7 @@ export class QuoteSaveService {
   save(newQuote: Quote): void {
     let quotes = this.quotes;
 
-    if (quotes.some(quote => quote.id === newQuote.id)) {
+    if (quotes.some(quote => quote._id === newQuote._id)) {
       return;
     }
 
@@ -41,8 +41,8 @@ export class QuoteSaveService {
     this.savedQuotes.next(quotes);
   }
 
-  remove(id: number): void {
-    const quotes = this.quotes.filter(quote => quote.id !== id);
+  remove(id: string): void {
+    const quotes = this.quotes.filter(quote => quote._id !== id);
     this.storageService.set<Quote[]>(this.storageKey, quotes);
     this.savedQuotes.next(quotes);
   }

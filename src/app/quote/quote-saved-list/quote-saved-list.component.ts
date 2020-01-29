@@ -15,12 +15,12 @@ import { Icon } from 'src/app/shared/icon.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuoteSavedListComponent {
-  @Output() quoteRemoved = new EventEmitter<number>();
+  @Output() quoteRemoved = new EventEmitter<string>();
   @Input() quotes: Quote[];
 
   icon = Icon;
 
-  trackByFn(index: number, quote: Quote): number {
-    return quote.id;
+  trackByFn(index: number, quote: Quote): string {
+    return quote._id;
   }
 }

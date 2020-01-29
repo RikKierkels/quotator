@@ -1,6 +1,5 @@
 export interface Quote {
-  readonly id: number;
+  readonly _id: string;
+  readonly content: string;
   readonly author: string;
-  readonly quote: string;
-  readonly permalink: string;
 }

@@ -88,7 +88,7 @@ describe('QuoteSaveService', () => {
       const storedQuote = makeQuote();
       service.save(storedQuote);
 
-      service.remove(storedQuote.id);
+      service.remove(storedQuote._id);
 
       expect(storageService.set).toHaveBeenCalledWith('app.saved', []);
     });
@@ -97,7 +97,7 @@ describe('QuoteSaveService', () => {
       const storedQuote = makeQuote();
       service.save(storedQuote);
 
-      service.remove(storedQuote.id);
+      service.remove(storedQuote._id);
 
       service.quotes$.subscribe(quotes => {
         expect(quotes).toEqual([]);

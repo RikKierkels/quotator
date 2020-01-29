@@ -1,11 +1,11 @@
 <ul>
   <li *ngFor="let quote of quotes; trackBy: trackByFn" class="quote-list-item">
     <div class="quote-wrapper">
-      <p class="quote">{{ quote.quote }}</p>
+      <p class="quote">{{ quote.content }}</p>
       <small class="author">{{ quote.author }}</small>
     </div>
 
-    <button class="saved-button" (click)="quoteRemoved.emit(quote.id)">
+    <button class="saved-button" (click)="quoteRemoved.emit(quote._id)">
       <img
         class="button-icon"
         [src]="icon.Favorite"

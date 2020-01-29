@@ -1,6 +1,6 @@
 <main class="main-container" *ngIf="vm$ | async as vm">
   <section class="quote-container">
-    <h1 class="quote">{{ vm.quote.quote }}</h1>
+    <h1 class="quote">{{ vm.quote.content }}</h1>
     <h2 class="author">{{ vm.quote.author }}</h2>
     <div class="action-container">
       <qu-button
@@ -27,7 +27,7 @@
         altText="Icon indicating that the Quote is saved"
         [inverted]="true"
         [icon]="icon.Favorite"
-        (click)="removeQuote(vm.quote.id)"
+        (click)="removeQuote(vm.quote._id)"
         class="button"
       >
         Saved

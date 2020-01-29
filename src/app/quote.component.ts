@@ -21,7 +21,7 @@ export class QuoteComponent implements OnInit {
   ]).pipe(
     map(([quote, savedQuotes]) => {
       const isSaved = savedQuotes.some(
-        savedQuote => savedQuote.id === quote.id
+        savedQuote => savedQuote._id === quote._id
       );
       return { quote, savedQuotes, isSaved };
     })
@@ -44,7 +44,7 @@ export class QuoteComponent implements OnInit {
     this.quoteSaveService.save(quote);
   }
 
-  removeQuote(id: number): void {
+  removeQuote(id: string): void {
     this.quoteSaveService.remove(id);
   }
 }

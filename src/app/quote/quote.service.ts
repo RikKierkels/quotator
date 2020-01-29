@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Environment } from 'src/app/shared/environment';
 import { Observable, of, ReplaySubject } from 'rxjs';
-import { catchError, exhaustMap, shareReplay, switchMap } from 'rxjs/operators';
+import { catchError, exhaustMap, map, shareReplay } from 'rxjs/operators';
 import { Quote } from 'src/app/quote/quote.interface';
 
 @Injectable({
@@ -10,17 +10,16 @@ import { Quote } from 'src/app/quote/quote.interface';
 })
 export class QuoteService {
   errorQuote: Quote = {
-    id: -1,
+    _id: '######',
     quote: 'Oops, looks like something went wrong! Try to fetch a new quote :)',
-    author: 'R.J.M. Kierkels',
-    permalink: ''
+    author: 'R.J.M. Kierkels'
   };
   fetchQuote = new ReplaySubject<void>(1);
 
-  quote$ = this.fetchQuote.pipe(
+  quote$: Observable<Quote> = this.fetchQuote.pipe(
     exhaustMap(() => {
       return this.httpClient
-        .get<Quote>(`${this.environment.apiUrl}/random.json`)
+        .get<Quote>(`${this.environment.apiUrl}/random`)
         .pipe(catchError(() => of(this.errorQuote)));
     }),
     shareReplay(1)
