@@ -1,12 +1,63 @@
-import { TestBed } from '@angular/core/testing';
+import { QuoteService } from 'src/app/quote/quote.service';
+import { Environment } from 'src/app/shared/environment';
+import { HttpClient } from '@angular/common/http';
+import { of, throwError } from 'rxjs';
+import { Quote } from 'src/app/quote/quote.interface';
 
-import { QuoteService } from './quote.service';
+jest.mock('@angular/common/http');
 
 describe('QuoteService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let httpClient: jest.Mocked<HttpClient>;
+  let service: QuoteService;
 
-  it('should be created', () => {
-    const service: QuoteService = TestBed.get(QuoteService);
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    const environment: Environment = { apiUrl: 'https://some-api.com' };
+    httpClient = new HttpClient(null) as jest.Mocked<HttpClient>;
+    service = new QuoteService(httpClient, environment);
+  });
+
+  it('should fetch a random quote from the api', done => {
+    const expectedQuote: Quote = {
+      id: 1,
+      author: 'R.J.M. Kierkels',
+      quote: 'Mocking the environment is easy now.',
+      permalink: ''
+    };
+    httpClient.get.mockImplementationOnce((url: string) => {
+      return url === 'https://some-api.com/random.json'
+        ? of(expectedQuote)
+        : throwError('api url is incorrect');
+    });
+
+    service.quote$.subscribe(
+      quote => {
+        expect(quote).toEqual(expectedQuote);
+        done();
+      },
+      error => fail(error)
+    );
+
+    service.fetchQuote.next();
+  });
+
+  it('should show an error quote if the api call fails', done => {
+    const errorQuote = {
+      id: -1,
+      quote:
+        'Oops, looks like something went wrong! Try to fetch a new quote :)',
+      author: 'R.J.M. Kierkels',
+      permalink: ''
+    };
+    httpClient.get.mockReturnValueOnce(throwError(null));
+
+    service.quote$.subscribe(
+      quote => {
+        expect(quote).toEqual(errorQuote);
+        done();
+      },
+      () => fail()
+    );
+
+    service.fetchQuote.next();
   });
 });
