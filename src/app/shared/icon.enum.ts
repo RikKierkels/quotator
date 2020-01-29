@@ -1,7 +1,7 @@
 export enum Icon {
-  Favorite = '/assets/favorite.svg',
-  FavoriteBorder = '/assets/favorite_border.svg',
-  Refresh = '/assets/refresh.svg',
-  Play = '/assets/play.svg',
-  Stop = '/assets/stop.svg'
+  Favorite = '/assets/favorite.png',
+  FavoriteBorder = '/assets/favorite_border.png',
+  Refresh = '/assets/refresh.png',
+  Play = '/assets/play.png',
+  Stop = '/assets/stop.png'
 }

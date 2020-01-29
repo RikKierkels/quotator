@@ -1,9 +1,6 @@
 import { QuoteComponent } from 'src/app/quote.component';
 import { QuoteService } from 'src/app/quote/quote.service';
 import { QuoteSaveService } from 'src/app/quote/quote-save.service';
-import { makeQuote } from 'src/app/quote/quote.test-helpers';
-import { of, Subject } from 'rxjs';
-import { Quote } from 'src/app/quote/quote.interface';
 
 jest.mock('src/app/quote/quote.service');
 jest.mock('src/app/quote/quote-save.service');
