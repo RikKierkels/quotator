@@ -1,27 +1,70 @@
 # Quotator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+Quotator shows a random quote and allows users to save this quote for later use. The quote is fetched from a [public API](https://api.quotable.io/random) which returns a random quote from a pool of ~1500 quotes. Saving the quote will store the quote in the local storage of the device.
 
-## Development server
+The application can be accessed at: https://quotator.now.sh
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Getting Started](#getting-started)
+  - [Installing](#installing)
+- [Running the tests](#running-the-tests)
+- [Deployment](#deployment)
+- [Client](#client)
+  - [Application](#application)
+  - [QA](#QA)
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Prerequisites
 
-## Running unit tests
+- Node 12.x
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Installing
 
-## Running end-to-end tests
+```
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Running the tests
 
-## Further help
+```
+ng test
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Deployment
+
+```
+ng serve
+```
+
+## Client
+
+### Application
+
+- The client application is built with [Angular 8](https://angular.io). 
+
+- The client follows the guidelines of the [Angular style guide](https://angular.io/guide/styleguide).
+
+- The application consists of a single page. Routing is not included in the client.
+
+- Data flows throughout the application adhere to the push based architecture. Data only flows 1-way. Services push data towards components through the use of long lived observable streams. In return component data flows towards services via events. Some key benefits of this architecture include:
+
+  - Utilization of OnPush change detection. Thus reducing the amount of unnecessary change detection cycles.
+  - State Immutability. Due to the nature of observable streams state cannot be mutated from within a component.
+  - Easier separation of concerns. Components are forced to delegate user interactions to a non-component layer (services).
+
+  You can read more about this [here](https://medium.com/@thomasburlesonIA/push-based-architectures-with-rxjs-81b327d7c32d) and [here](https://angular-academy.com/angular-architecture-best-practices/). Some of these resources support the idea of building a facade as an extra API layer between services and components. This was not implemented for Quatotor as it would be overkill for such a small application with limited complexity.
+
+- Types are added where they are needed, utilizing the type coercion system of TypeScript. The exception to this rule is methods and functions. These always have typed parameters and a return type.
+
+- The file structure follows the guidelines from the previously mentioned angular style guide. All feature files and their corresponding NgModule are located in their own folder. Subfolders have been created whenever a folder contains seven or more files.
+
+### QA
+
+- Unit tests have been included to test the business logic within the components and services. 
+- Components are tested in isolation of the Angular Framework. This avoids testing third party Angular code and ensures we test "one thing".  Read more about this [here](https://medium.com/@marko.bjelac/unit-testing-angular-testbed-considered-harmful-7e2bb8f32586).
+- Due to time pressure end-to-end tests have not been included.
+
+
+
