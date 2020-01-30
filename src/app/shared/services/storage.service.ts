@@ -7,7 +7,7 @@ import { LOCAL_STORAGE } from 'src/app/shared/storage.tokens';
 export class StorageService {
   constructor(@Inject(LOCAL_STORAGE) private readonly storage: Storage) {}
 
-  get<T>(key: string): T {
+  get<T>(key: string): T | null {
     const item = this.storage.getItem(key);
     return item ? JSON.parse(item) : null;
   }
