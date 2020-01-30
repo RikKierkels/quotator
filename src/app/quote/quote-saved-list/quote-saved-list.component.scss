@@ -25,6 +25,7 @@
 }
 
 .saved-button {
+  @include no-select;
   flex: 0 0 30px;
   height: 30px;
   border: 0;

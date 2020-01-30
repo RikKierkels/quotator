@@ -1,6 +1,7 @@
 @import '../../../design/index';
 
 .button {
+  @include no-select;
   display: flex;
   align-items: center;
   border: 1px solid $color-primary;
