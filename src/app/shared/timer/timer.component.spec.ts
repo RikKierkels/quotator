@@ -15,7 +15,7 @@ describe('TimerComponent', () => {
   });
 
   it('should tick at the set interval', done => {
-    // Expecting 3 ticks but ticks first emit is 0;
+    // Expecting 3 ticks but timer starts counting at 0.
     const expectedTicks = 2;
 
     component.tick.subscribe(ticks => {
