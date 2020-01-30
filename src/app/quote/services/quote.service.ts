@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Environment } from 'src/app/shared/environment';
+import { Environment } from 'src/app/shared/environment.model';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { catchError, exhaustMap, map, shareReplay } from 'rxjs/operators';
 import { Quote } from 'src/app/quote/quote.interface';

@@ -1,5 +1,5 @@
 import { QuoteService } from 'src/app/quote/services/quote.service';
-import { Environment } from 'src/app/shared/environment';
+import { Environment } from 'src/app/shared/environment.model';
 import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 import { Quote } from 'src/app/quote/quote.interface';

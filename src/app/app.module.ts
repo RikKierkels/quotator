@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
-import { Environment } from 'src/app/shared/environment';
+import { Environment } from 'src/app/shared/environment.model';
 import { environment } from 'src/environments/environment';
 import { QuoteModule } from 'src/app/quote/quote.module';
 import { SharedModule } from 'src/app/shared/shared.module';
