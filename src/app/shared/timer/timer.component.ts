@@ -10,6 +10,7 @@ import { TimerState } from 'src/app/shared/timer/timer-state.interface';
 import { merge, NEVER, Observable, Subject, Subscription, timer } from 'rxjs';
 import {
   distinctUntilChanged,
+  filter,
   map,
   mapTo,
   scan,
@@ -38,7 +39,8 @@ export class TimerComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private initialState: TimerState = { isTicking: false, intervalInSec: 5 };
   private intervalChange$ = this.intervalControl.valueChanges.pipe(
-    distinctUntilChanged()
+    distinctUntilChanged(),
+    filter(interval => interval !== null)
   );
 
   private commands$ = merge(
