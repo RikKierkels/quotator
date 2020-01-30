@@ -30,22 +30,21 @@ import { FormControl } from '@angular/forms';
 export class TimerComponent implements OnInit, OnDestroy {
   @Output() tick = new EventEmitter<number>();
 
-  private initialState: TimerState = { isTicking: false, intervalInSec: 5 };
-  private subscription: Subscription;
-
   icon = Icon;
-  intervalControl = new FormControl(this.initialState.intervalInSec);
-
+  intervalControl = new FormControl(0);
   start = new Subject<void>();
   stop = new Subject<void>();
 
-  commands$ = merge(
+  private subscription: Subscription;
+  private initialState: TimerState = { isTicking: false, intervalInSec: 5 };
+  private intervalChange$ = this.intervalControl.valueChanges.pipe(
+    distinctUntilChanged()
+  );
+
+  private commands$ = merge(
     this.start.pipe(mapTo({ isTicking: true })),
     this.stop.pipe(mapTo({ isTicking: false })),
-    this.intervalControl.valueChanges.pipe(
-      distinctUntilChanged(),
-      map(intervalInSec => ({ intervalInSec }))
-    )
+    this.intervalChange$.pipe(map(intervalInSec => ({ intervalInSec })))
   );
 
   state$: Observable<TimerState> = this.commands$.pipe(
@@ -59,7 +58,7 @@ export class TimerComponent implements OnInit, OnDestroy {
     shareReplay(1)
   );
 
-  timer$ = this.state$.pipe(
+  private timer$ = this.state$.pipe(
     switchMap(state => {
       const intervalInMs = state.intervalInSec * 1000;
       return state.isTicking ? timer(intervalInMs, intervalInMs) : NEVER;
@@ -68,6 +67,9 @@ export class TimerComponent implements OnInit, OnDestroy {
   );
 
   ngOnInit(): void {
+    this.intervalControl.setValue(this.initialState.intervalInSec, {
+      emitEvent: false
+    });
     this.subscription = this.timer$.subscribe();
   }
 

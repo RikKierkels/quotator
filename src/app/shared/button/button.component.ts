@@ -14,7 +14,7 @@ import { Icon } from 'src/app/shared/icon.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
-  @Output() click = new EventEmitter<void>();
+  @Output() clicked = new EventEmitter<void>();
   @Input() altText: string;
   @Input() icon: Icon;
   @Input() inverted: boolean;

@@ -5,8 +5,8 @@ import { TimerComponent } from 'src/app/shared/timer/timer.component';
 import { ButtonComponent } from 'src/app/shared/button/button.component';
 
 @NgModule({
-  declarations: [TimerComponent, ButtonComponent],
-  exports: [TimerComponent, ButtonComponent],
+  declarations: [ButtonComponent, TimerComponent],
+  exports: [ButtonComponent, TimerComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class SharedModule {}

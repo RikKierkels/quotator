@@ -3,6 +3,7 @@ import { Environment } from 'src/app/shared/environment';
 import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 import { Quote } from 'src/app/quote/quote.interface';
+import { makeQuote } from 'src/app/quote/quote.test-helpers';
 
 jest.mock('@angular/common/http');
 
@@ -17,11 +18,7 @@ describe('QuoteService', () => {
   });
 
   it('should fetch a random quote from the api', done => {
-    const expectedQuote: Quote = {
-      _id: '1',
-      content: 'Mocking the environment is easy now.',
-      author: 'R.J.M. Kierkels'
-    };
+    const expectedQuote = makeQuote();
     httpClient.get.mockImplementationOnce((url: string) => {
       return url === 'https://some-api.com/random'
         ? of(expectedQuote)

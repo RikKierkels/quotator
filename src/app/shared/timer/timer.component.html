@@ -1,26 +1,32 @@
 <ng-container *ngIf="state$ | async as state">
   <qu-button
     *ngIf="!state.isTicking"
+    class="button"
     altText="Icon showing a play symbol"
     [icon]="icon.Play"
-    (click)="start.next()"
-    class="button"
+    (clicked)="start.next()"
   >
     Start
   </qu-button>
 
   <qu-button
     *ngIf="state.isTicking"
+    class="button"
     altText="Icon showing a stop symbol"
     [icon]="icon.Stop"
-    (click)="stop.next()"
-    class="button"
+    (clicked)="stop.next()"
   >
     Stop
   </qu-button>
 </ng-container>
 
 <label>
-  <input [formControl]="intervalControl" type="number" class="input" />
+  <input
+    class="input"
+    aria-label="Interval"
+    type="number"
+    min="0"
+    [formControl]="intervalControl"
+  />
   sec.
 </label>

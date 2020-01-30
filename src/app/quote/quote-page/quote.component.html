@@ -1,37 +1,38 @@
-<main class="main-container" *ngIf="vm$ | async as vm">
+<main *ngIf="vm$ | async as vm" class="main-container">
   <section class="quote-container">
     <h1 class="quote">{{ vm.quote.content }}</h1>
     <h2 class="author">{{ vm.quote.author }}</h2>
     <div class="action-container">
       <qu-button
+        class="button"
         altText="Icon showing a refresh symbol"
         [icon]="icon.Refresh"
-        (click)="fetchQuote()"
-        class="button"
+        (clicked)="fetchQuote()"
       >
         Next
       </qu-button>
 
       <qu-button
         *ngIf="!vm.isSaved"
+        class="button"
         altText="Icon indicating that the Quote is not saved"
         [icon]="icon.FavoriteBorder"
-        (click)="saveQuote(vm.quote)"
-        class="button"
+        (clicked)="saveQuote(vm.quote)"
       >
         Save
       </qu-button>
 
       <qu-button
         *ngIf="vm.isSaved"
-        altText="Icon indicating that the Quote is saved"
-        [inverted]="true"
-        [icon]="icon.Favorite"
-        (click)="removeQuote(vm.quote._id)"
         class="button"
+        altText="Icon indicating that the Quote is saved"
+        [icon]="icon.Favorite"
+        [inverted]="true"
+        (clicked)="removeQuote(vm.quote._id)"
       >
         Saved
       </qu-button>
+
       <qu-timer (tick)="fetchQuote()"></qu-timer>
     </div>
   </section>

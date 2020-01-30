@@ -5,7 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { QuoteComponent } from './quote-page/quote.component';
 
 @NgModule({
-  declarations: [QuoteSavedListComponent, QuoteComponent],
+  declarations: [QuoteComponent, QuoteSavedListComponent],
   exports: [QuoteComponent],
   imports: [CommonModule, SharedModule]
 })
