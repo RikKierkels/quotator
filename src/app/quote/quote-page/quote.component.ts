@@ -33,7 +33,7 @@ export class QuoteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.quoteService.fetchQuote.next();
+    this.fetchQuote();
   }
 
   fetchQuote(): void {
