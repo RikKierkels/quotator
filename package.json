@@ -1,15 +1,31 @@
 {
   "name": "quotator",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Application for showing and storing random quotes",
+  "author": {
+    "name": "Rik Kierkels"
+  },
+  "homepage": "https://github.com/RikKierkels/quotator",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:RikKierkels/quotator.git"
+  },
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng lint && ng test && ng build --prod",
+    "build": "npm run validate && ng build --prod",
+    "validate": "npm run lint && npm run test",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "pre-push": "npm run validate"
+    }
+  },
   "dependencies": {
     "@angular/animations": "8.2.14",
     "@angular/common": "8.2.14",
@@ -20,7 +36,9 @@
     "@angular/platform-browser-dynamic": "8.2.14",
     "@angular/router": "8.2.14",
     "faker": "4.1.0",
+    "husky": "4.2.1",
     "prettier": "1.19.1",
+    "pretty-quick": "2.0.1",
     "rxjs": "6.4.0",
     "tslib": "1.10.0",
     "zone.js": "0.9.1"
