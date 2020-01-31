@@ -2,7 +2,7 @@
 
 Quotator shows a random quote and allows users to save this quote for later use. The quote is fetched from a [public API](https://api.quotable.io/random) that returns a random quote from a pool of ~1500 quotes. Saving the quote will store the quote in the local storage of the device.
 
-The application can be accessed at https://quotator.now.sh.
+The application can be accessed at [https://quotator.now.sh](https://quotator.now.sh/).
 
 - [Getting Started](#getting-started)
   - [Installing](#installing)
@@ -40,7 +40,7 @@ ng serve
 
 ### Application
 
-- The client application is built with [Angular 8](https://angular.io).
+- The client application is built with [Angular 8](https://angular.io/).
 
 - The client follows the guidelines of the [Angular style guide](https://angular.io/guide/styleguide).
 
@@ -62,8 +62,8 @@ ng serve
 
 ### QA
 
-- The client application is hosted on [Zeit](https://zeit.co) [Now](https://github.com/zeit/now). Commits to the master branch trigger a pipeline that validates (lint & test) the application before building and deploying it.
-
+- The client application is hosted on [Zeit](https://zeit.co/) [Now](https://github.com/zeit/now). Commits to the master branch trigger a pipeline that validates (lint & test) the application before building and deploying it.
+- There are two git hooks. The first hook formats files before each commit. The second hook validates the application before each push.
 - Unit tests have been included to test the business logic within the components and services. The test setup is based on the first two chapters of [The Art of Unit Testing, Third Edition](https://www.manning.com/books/the-art-of-unit-testing-third-edition).
 - Components are tested in isolation of the Angular Framework. This avoids testing third party Angular code and ensures we test "one thing". Read more about this [here](https://medium.com/@marko.bjelac/unit-testing-angular-testbed-considered-harmful-7e2bb8f32586).
 - Due to time pressure, end-to-end tests have not been included.
