@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git@github.com:RikKierkels/quotator.git"
   },
+  "bugs": {
+    "url": "https://github.com/RikKierkels/quotator/issues"
+  },
   "license": "MIT",
   "scripts": {
     "ng": "ng",
