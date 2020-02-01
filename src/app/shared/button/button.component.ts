@@ -17,5 +17,5 @@ export class ButtonComponent {
   @Output() clicked = new EventEmitter<void>();
   @Input() altText?: string;
   @Input() icon?: Icon;
-  @Input() inverted: boolean = false;
+  @Input() inverted = false;
 }
