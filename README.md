@@ -46,7 +46,7 @@ ng serve
 
 - The application consists of a single page. Routing is not included.
 
-- Quotator's architecture is push-based. Data only flows 1-way. Services push data towards components through the use of long-lived observable streams. In return component data flows towards services via events. Some key benefits of this architecture include:
+- Quotator's architecture is push-based. Data flows 1-way only. Services push data towards components through the use of long-lived observable streams. In return component data flows towards services via events. Some key benefits of this architecture include:
 
   - Utilization of OnPush change detection. Thus reducing the amount of unnecessary change detection cycles.
   - State Immutability. Due to the nature of observable streams state cannot be mutated from within a component.
@@ -62,7 +62,7 @@ ng serve
 
 ### QA
 
-- The client application is hosted on [Zeit](https://zeit.co/) [Now](https://github.com/zeit/now). Commits to the master branch trigger a pipeline that validates (lint & test) the application before building and deploying it.
+- The client application is hosted on [Zeit](https://zeit.co/) [Now](https://github.com/zeit/now). Commits to the master branch trigger a deployment that will validate (lint & test), build and deploy the client.
 - There are two git hooks. The first hook formats files before each commit. The second hook validates the application before each push.
 - Unit tests have been included to test the business logic within the components and services. The test setup is based on the first two chapters of [The Art of Unit Testing, Third Edition](https://www.manning.com/books/the-art-of-unit-testing-third-edition).
 - Components are tested in isolation of the Angular Framework. This avoids testing third party Angular code and ensures we test "one thing". Read more about this [here](https://medium.com/@marko.bjelac/unit-testing-angular-testbed-considered-harmful-7e2bb8f32586).
