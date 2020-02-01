@@ -21,7 +21,7 @@
     "validate": "npm run lint && npm run test",
     "test": "ng test",
     "lint": "ng lint",
-    "lint:styles": "stylelint \"src/app/**/*.scss\" --fix",
+    "lint:styles": "stylelint \"src/**/*.scss\" --fix",
     "e2e": "ng e2e"
   },
   "husky": {
