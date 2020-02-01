@@ -15,7 +15,7 @@ import { Icon } from 'src/app/shared/icon.enum';
 })
 export class ButtonComponent {
   @Output() clicked = new EventEmitter<void>();
-  @Input() altText: string;
-  @Input() icon: Icon;
-  @Input() inverted: boolean;
+  @Input() altText?: string;
+  @Input() icon?: Icon;
+  @Input() inverted: boolean = false;
 }
