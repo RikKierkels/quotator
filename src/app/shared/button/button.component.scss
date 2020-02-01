@@ -15,8 +15,12 @@
 }
 
 .button-icon {
-  height: 14px;
+  height: 1em;
   margin-left: spacing-size(small);
+
+  @include breakpoint-down(extra-small) {
+    height: 0.875em;
+  }
 
   &.invert {
     filter: invert(1);
