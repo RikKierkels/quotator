@@ -40,7 +40,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   private initialState: TimerState = { isTicking: false, intervalInSec: 5 };
   private intervalChange$ = this.intervalControl.valueChanges.pipe(
     distinctUntilChanged(),
-    filter(interval => interval !== null)
+    filter(intervalInSec => intervalInSec !== null)
   );
 
   private commands$ = merge(
@@ -61,9 +61,9 @@ export class TimerComponent implements OnInit, OnDestroy {
   );
 
   private timer$ = this.state$.pipe(
-    switchMap(state => {
-      const intervalInMs = state.intervalInSec * 1000;
-      return state.isTicking ? timer(intervalInMs, intervalInMs) : NEVER;
+    switchMap(({ isTicking, intervalInSec }) => {
+      const intervalInMs = intervalInSec * 1000;
+      return isTicking ? timer(intervalInMs, intervalInMs) : NEVER;
     }),
     tap(tickCount => this.tick.emit(tickCount))
   );
