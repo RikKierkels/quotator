@@ -9,19 +9,22 @@ import { Quote } from 'src/app/quote/quote.interface';
   providedIn: 'root'
 })
 export class QuoteService {
-  errorQuote: Quote = {
-    _id: '######',
-    content:
-      'Oops, looks like something went wrong! Try to fetch a new quote :)',
-    author: 'R.J.M. Kierkels'
-  };
   fetchQuote = new ReplaySubject<void>(1);
 
   quote$: Observable<Quote> = this.fetchQuote.pipe(
     exhaustMap(() => {
       return this.httpClient
         .get<Quote>(`${this.environment.apiUrl}/random`)
-        .pipe(catchError(() => of(this.errorQuote)));
+        .pipe(
+          catchError(() =>
+            of({
+              _id: '######',
+              content:
+                'Oops, looks like something went wrong! Try to fetch a new quote :)',
+              author: 'R.J.M. Kierkels'
+            })
+          )
+        );
     }),
     shareReplay(1)
   );
