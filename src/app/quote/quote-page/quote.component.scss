@@ -28,15 +28,15 @@
 }
 
 .quote {
-  @include quote;
   max-width: 75%;
   font-size: font-size(large);
+  @include quote;
 }
 
 .author {
-  @include author;
   margin-top: spacing-size(small);
   font-size: font-size(medium);
+  @include author;
 }
 
 .action-container {

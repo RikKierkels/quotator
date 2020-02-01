@@ -14,25 +14,28 @@
 }
 
 .quote {
-  @include quote;
   font-size: font-size(medium);
+  @include quote;
 }
 
 .author {
-  @include author;
   margin-top: spacing-size(small);
   font-size: font-size(small);
+  @include author;
 }
 
 .saved-button {
-  @include no-select;
-  flex: 0 0 30px;
-  height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 2em;
+  height: 2em;
   border: 0;
   padding: 0;
   background-color: transparent;
+  @include no-select;
 
   .button-icon {
-    height: 20px;
+    height: 1.25em;
   }
 }

@@ -1,12 +1,12 @@
 @import '../../../design/index';
 
 .button {
-  @include no-select;
   display: flex;
   align-items: center;
   border: 1px solid $color-primary;
   padding: spacing-size(small) spacing-size(medium);
   background-color: $color-secondary;
+  @include no-select;
 
   &.invert {
     background-color: $color-primary;
@@ -15,8 +15,12 @@
 }
 
 .button-icon {
-  height: 14px;
+  height: 1em;
   margin-left: spacing-size(small);
+
+  @include breakpoint-down(extra-small) {
+    height: 0.875em;
+  }
 
   &.invert {
     filter: invert(1);

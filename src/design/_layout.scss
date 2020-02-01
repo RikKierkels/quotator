@@ -1,4 +1,8 @@
-$spacing-sizes: (small: 8px, medium: 16px, large: 32px);
+$spacing-sizes: (
+  small: 0.5rem,
+  medium: 1rem,
+  large: 2rem
+);
 $spacing-multiplier: 1;
 
 @function spacing-size($size) {
@@ -6,8 +10,9 @@ $spacing-multiplier: 1;
 }
 
 $breakpoints: (
-  small: 450px,
-  medium : 900px
+  extra-small: 350px,
+  small: 460px,
+  medium: 1000px
 );
 
 @mixin breakpoint-down($breakpoint) {
